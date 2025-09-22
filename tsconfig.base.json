@@ -22,8 +22,7 @@
     ],
     "types": [
       "node",
-      "jest",
-      "jest/globals"
+      "@types/jest"
     ],
     "baseUrl": ".",
     "paths": {
