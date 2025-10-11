@@ -1,13 +1,43 @@
-import type { Config } from '@jest/types';
+// import type { Config } from '@jest/types';
 
-const config: Config.InitialOptions = {
+// const config: Config.InitialOptions = {
+//   preset: 'ts-jest',
+//   testEnvironment: 'node',
+//   roots: ['<rootDir>/src'],
+//   transform: { '^.+\\.ts$': ['ts-jest', { tsconfig: 'tsconfig.test.json' }] },
+//   testRegex: '/__tests__/.*.test.ts$',
+//   verbose: true,
+//   moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
+// };
+
+// export default config;
+
+import { createDefaultPreset } from 'ts-jest';
+
+const tsJestTransformCfg = createDefaultPreset().transform;
+
+export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   roots: ['<rootDir>/src'],
-  transform: { '^.+\\.ts$': ['ts-jest', { tsconfig: 'tsconfig.test.json' }] },
-  testRegex: '/__tests__/.*.test.ts$',
-  verbose: true,
-  moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
+  testMatch: ['**/__tests__/**/*.ts', '**/?(*.)+(spec|test).ts'],
+  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.d.ts'],
+  transform: {
+    '^.+\\.ts$': [
+      'ts-jest',
+      {
+        useESM: true,
+        tsconfig: {
+          module: 'esnext',
+          target: 'esnext',
+          moduleResolution: 'node',
+          verbatimModuleSyntax: false,
+        },
+      },
+    ],
+  },
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+  extensionsToTreatAsEsm: ['.ts'],
 };
-
-export default config;

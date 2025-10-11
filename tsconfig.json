@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "files": [],
   "include": [],
@@ -12,10 +19,4 @@
       "path": "./tsconfig.test.json"
     },
   ],
-  "baseUrl": ".",
-  "paths": {
-    "@/*": [
-      "src/*"
-    ]
-  }
 }

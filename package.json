@@ -1,9 +1,9 @@
 {
-  "name": "@sigmadream/template-ts",
+  "name": "pokemon-dashboard",
   "private": true,
   "description": "A template for TypeScript projects with pre-configured tooling",
   "version": "0.0.0",
-  "author": "Sangkon Han <sigmadream@gmail.com>",
+  "author": "Jeongwoo Ma <majw0415@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",  
+  "type": "module",
   "engines": {
     "node": ">=22.0"
   },
@@ -23,17 +23,26 @@
     "build": "tsc --build tsconfig.build.json",
     "prettier": "prettier --write .",
     "test": "jest",
-    "watch": "tsc --build --watch"
+    "watch": "tsc --build --watch",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts"
   },
   "devDependencies": {
     "@jest/globals": "30.1.2",
+    "@types/cors": "^2.8.19",
     "@types/jest": "30.0.0",
     "@types/node": "24.3.1",
+    "cors": "^2.8.5",
     "jest": "30.1.3",
     "jest-junit": "16.0.0",
     "prettier": "3.6.0",
     "ts-jest": "29.4.1",
     "ts-node": "10.9.2",
+    "tsx": "^4.20.6",
     "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "express": "^5.1.0"
   }
 }
